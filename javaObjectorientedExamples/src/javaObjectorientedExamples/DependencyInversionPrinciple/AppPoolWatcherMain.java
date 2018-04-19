@@ -17,12 +17,18 @@ public class AppPoolWatcherMain {
 		watcher.Notify(writer, "Sample message to log");*/
 		
 		EventLogWriter writer = new EventLogWriter();
+		EmailSender esender = new EmailSender();
 		AppPoolWatcher watcher = new AppPoolWatcher();
+		
 		// This can be done in some class
 		watcher.setAction(writer);
 
 		// This can be done in some other class
 		watcher.Notify("Sample message to log");
+		
+		watcher.setAction(esender);
+		
+		watcher.Notify("sending email");
 	}
 
 }

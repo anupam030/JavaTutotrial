@@ -1,4 +1,6 @@
 package javaObjectorientedExamples.LiskovSubstitutionPrinciple;
+
+
 // Violation of Likov's Substitution Principle
 class Rectangle
 {
@@ -27,7 +29,7 @@ class Rectangle
 	}	
 }
 
-class Square extends Rectangle 
+class Square extends Rectangle
 {
 	public void setWidth(int width){
 		m_width = width;
@@ -41,7 +43,7 @@ class Square extends Rectangle
 
 }
 
-class LspTest
+public class LspTest
 {
 	private static Rectangle getNewRectangle()
 	{
