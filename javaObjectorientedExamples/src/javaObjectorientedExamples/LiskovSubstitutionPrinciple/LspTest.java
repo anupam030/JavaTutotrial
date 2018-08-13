@@ -12,6 +12,14 @@ with a Derived class without affecting the functionality of the program module.
 Intent
 Derived types must be completely substitutable for their base types.*/
 
+
+/*Example
+Below is the classic example for which the Likov's Substitution Principle is violated. In the example 2 classes are used: Rectangle and Square.
+Let's assume that the Rectangle object is used somewhere in the application. We extend the application and add the Square class. The square
+class is returned by a factory pattern, based on some conditions and we don't know the exact what type of object will be returned. But we
+know it's a Rectangle. We get the rectangle object, set the width to 5 and height to 10 and get the area. For a rectangle with width 5 and
+height 10 the area should be 50. Instead the result will be 100*/
+
 // Violation of Likov's Substitution Principle
 class Rectangle
 {
