@@ -16,7 +16,8 @@ public class ThreadLocalTest {
 
         @Override
         public void run() {
-            threadLocal.set( (int) (Math.random() * 100D) );// saves the value inside  by putting value inside Thread.threadlocals map
+            threadLocal.set( (int) (Math.random() * 100D) );// saves the value inside  by putting value inside Thread.
+            //threadlocals map
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
