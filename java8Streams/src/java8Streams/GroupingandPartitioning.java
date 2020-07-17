@@ -14,13 +14,14 @@ public class GroupingandPartitioning {
 		
 		Stream<Locale> locales = Stream.of(Locale.getAvailableLocales());
 
-/*		Map<String, List<Locale>> countryToLocales = locales.collect(
+		Map<String, List<Locale>> countryToLocales = locales.collect(
 				Collectors.groupingBy(Locale::getCountry));
-		
+		/*Map<String, List<Locale>> countryToLocales = locales.collect(
+				Collectors.groupingBy(l->l.getCountry()));*/
 		List<Locale> swissLocales = countryToLocales.get("CH");
 		// Yields locales [it_CH, de_CH, fr_CH]
 		
-		swissLocales.forEach(System.out::println);*/
+		swissLocales.forEach(System.out::println);
 		
 		/*When the classifier function is a predicate function (that is, a function returning
 				a boolean value), the stream elements are partitioned into two lists: those where

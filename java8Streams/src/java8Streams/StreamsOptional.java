@@ -15,6 +15,14 @@ public class StreamsOptional {
 		Stream<String> uniqueWords
 		= Stream.of("merrily", "merrily", "merrily", "Qgentlydgd","shsdjkdj","sffdmjdfdfj").distinct();
 		
+		Stream<String> uniqueWordssecond
+		= Stream.of("merrily", "merrily", "merrily", "Qgentlydgd","shsdjkdj","sffdmjdfdfj").distinct();
+	
+		/*Stream<Character> characterStream = uniqueWords.flatMap(s->characterStream(s));*/
+		Stream<Character> characterStream = uniqueWords.flatMap(StreamsOptional::characterStream);
+		characterStream.forEach(System.out::println);
+		
+		
 		Optional<String> startsWithQ
 		= uniqueWords.parallel().filter(s -> s.startsWith("Q")).findAny();
 		
@@ -23,6 +31,7 @@ public class StreamsOptional {
 		results.forEach(System.out::println);
 		
 		Optional<Boolean> added = startsWithQ.map(results::add);
+//		Optional<Boolean> added = startsWithQ.map(s->results.add(s));
 		if (added.isPresent())
 			System.out.println("added is true");
 		
@@ -31,7 +40,8 @@ public class StreamsOptional {
 
 		//String resultQ = startsWithQ.orElseThrow(NoSuchElementException::new);
 		
-		Optional<Double> resultOptionalFlat = inverse(10.0).flatMap(StreamsOptional::squareRoot);
+		//Optional<Double> resultOptionalFlat = inverse(10.0).flatMap(StreamsOptional::squareRoot);
+		Optional<Double> resultOptionalFlat = inverse(10.0).flatMap(d->squareRoot(d));
 
 		if (resultOptionalFlat.isPresent())
 			System.out.println(resultOptionalFlat.get());
@@ -46,5 +56,9 @@ public class StreamsOptional {
 		return x < 0 ? Optional.empty() : Optional.of(Math.sqrt(x));
 	}
 
-
+	public static Stream<Character> characterStream(String s) {
+		 List<Character> result = new ArrayList<>();
+		 for (char c : s.toCharArray()) result.add(c);
+		 return result.stream();
+		}
 }
